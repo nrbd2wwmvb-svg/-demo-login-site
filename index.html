@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f8fafc">
+<meta name="robots" content="noindex,nofollow">
+
+<meta http-equiv="Content-Security-Policy"
+content="default-src 'self' 'unsafe-inline';
+connect-src 'none';
+img-src 'self' data:;
+form-action 'none';
+object-src 'none';
+frame-ancestors 'none';">
+
+<title>Demo Verification</title>
+
+<style>
+*{
+  box-sizing:border-box
+}
+
+:root{
+  --bg:#eef2f7;
+  --card:#fff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --primary:#111827;
+  --danger:#b91c1c;
+  --success:#047857;
+}
+
+html,body{
+  margin:0;
+  min-height:100%;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;
+  background:linear-gradient(180deg,#f8fafc,#eef2f7);
+  color:var(--text)
+}
+
+body{
+  min-height:100vh;
+  min-height:100dvh
+}
+
+button,input,select{
+  font:inherit
+}
+
+.app{
+  min-height:100vh;
+  min-height:100dvh;
+  display:grid;
+  place-items:center;
+  padding:
+    max(18px,env(safe-area-inset-top))
+    14px
+    max(18px,env(safe-area-inset-bottom))
+}
+
+.card{
+  width:100%;
+  max-width:430px;
+  background:rgba(255,255,255,.98);
+  border:1px solid rgba(15,23,42,.06);
+  border-radius:28px;
+  padding:22px;
+  box-shadow:0 24px 65px rgba(15,23,42,.15);
+  position:relative;
+  overflow:hidden
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:20px
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px
+}
+
+.logo{
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  border-radius:15px;
+  background:#111827;
+  color:#fff;
+  font-size:21px;
+  font-weight:900
+}
+
+.brand-name{
+  font-weight:900;
+  font-size:16px
+}
+
+.brand-sub{
+  color:#64748b;
+  font-size:12px;
+  margin-top:2px
+}
+
+.demo-badge{
+  padding:7px 10px;
+  border-radius:999px;
+  background:#f1f5f9;
+  border:1px solid #e2e8f0;
+  font-size:11px;
+  font-weight:900;
+  color:#475569
+}
+
+.progress-info{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  color:#64748b;
+  margin-bottom:8px
+}
+
+.progress-track{
+  height:7px;
+  background:#e5eaf0;
+  border-radius:99px;
+  overflow:hidden;
+  margin-bottom:24px
+}
+
+.progress-bar{
+  height:100%;
+  width:33.333%;
+  border-radius:99px;
+  background:linear-gradient(90deg,#111827,#334155);
+  transition:.35s
+}
+
+.screen{
+  display:none;
+  animation:enter .32s ease
+}
+
+.screen.active{
+  display:block
+}
+
+@keyframes enter{
+  from{
+    opacity:0;
+    transform:translateY(10px)
+  }
+  to{
+    opacity:1;
+    transform:translateY(0)
+  }
+}
+
+.head{
+  text-align:center;
+  margin-bottom:23px
+}
+
+.head-icon{
+  width:60px;
+  height:60px;
+  display:grid;
+  place-items:center;
+  border-radius:19px;
+  margin:0 auto 12px;
+  background:#f8fafc;
+  border:1px solid #e2e8f0;
+  font-size:25px
+}
+
+h1{
+  margin:0;
+  font-size:25px;
+  letter-spacing:-.5px
+}
+
+.head p{
+  margin:8px auto 0;
+  max-width:330px;
+  color:#64748b;
+  font-size:14px;
+  line-height:1.7
+}
+
+.group{
+  margin-bottom:16px
+}
+
+label{
+  display:block;
+  margin-bottom:8px;
+  font-size:13px;
+  font-weight:800;
+  color:#334155
+}
+
+input,select{
+  width:100%;
+  height:54px;
+  border:1px solid #dbe3ec;
+  border-radius:15px;
+  background:#f8fafc;
+  padding:0 15px;
+  outline:none;
+  color:#111827;
+  transition:.2s
+}
+
+input:focus,select:focus{
+  background:#fff;
+  border-color:#94a3b8;
+  box-shadow:0 0 0 4px rgba(15,23,42,.06)
+}
+
+.phone-row{
+  display:grid;
+  grid-template-columns:110px 1fr;
+  gap:9px
+}
+
+.error{
+  min-height:18px;
+  color:#b91c1c;
+  font-size:12px;
+  margin-top:6px
+}
+
+.pass-wrap{
+  position:relative
+}
+
+.pass-wrap input{
+  padding-left:55px
+}
+
+.eye{
+  width:42px;
+  height:42px;
+  position:absolute;
+  left:6px;
+  top:6px;
+  border:0;
+  background:transparent;
+  border-radius:12px;
+  cursor:pointer
+}
+
+.primary,.secondary{
+  height:54px;
+  border-radius:15px;
+  font-weight:850;
+  cursor:pointer;
+  border:0
+}
+
+.primary{
+  width:100%;
+  background:#111827;
+  color:white;
+  box-shadow:0 10px 25px rgba(15,23,42,.14)
+}
+
+.secondary{
+  background:#f1f5f9;
+  color:#111827;
+  border:1px solid #e2e8f0
+}
+
+.primary:active,.secondary:active{
+  transform:scale(.99)
+}
+
+.row-buttons{
+  display:grid;
+  grid-template-columns:1fr 1.8fr;
+  gap:10px;
+  margin-top:10px
+}
+
+.link{
+  background:none;
+  border:0;
+  padding:4px 0;
+  font-size:13px;
+  font-weight:750;
+  color:#475569;
+  cursor:pointer
+}
+
+.link:disabled{
+  color:#cbd5e1
+}
+
+.otp-row{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:7px;
+  direction:ltr;
+  margin:23px 0 8px
+}
+
+.otp{
+  height:58px;
+  text-align:center;
+  font-size:24px;
+  font-weight:900;
+  padding:0;
+  border-radius:14px
+}
+
+.center{
+  text-align:center
+}
+
+.otp-tools{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:10px 0 15px;
+  color:#64748b;
+  font-size:13px
+}
+
+.hint{
+  padding:12px;
+  margin-bottom:15px;
+  text-align:center;
+  border-radius:14px;
+  background:#f8fafc;
+  border:1px dashed #cbd5e1;
+  color:#475569;
+  font-size:13px
+}
+
+.success{
+  text-align:center;
+  padding:28px 4px 10px
+}
+
+.check{
+  width:82px;
+  height:82px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  margin:0 auto 18px;
+  background:#ecfdf5;
+  border:1px solid #a7f3d0;
+  color:#047857;
+  font-size:39px;
+  font-weight:900;
+  animation:pop .4s ease
+}
+
+@keyframes pop{
+  from{
+    transform:scale(.6);
+    opacity:0
+  }
+  70%{
+    transform:scale(1.08)
+  }
+  to{
+    transform:scale(1);
+    opacity:1
+  }
+}
+
+.success h2{
+  font-size:25px;
+  margin:0
+}
+
+.success p{
+  color:#64748b;
+  font-size:14px;
+  line-height:1.7
+}
+
+.success .primary{
+  margin-top:16px
+}
+
+.footer{
+  margin-top:21px;
+  padding-top:14px;
+  border-top:1px solid #e2e8f0;
+  text-align:center;
+  direction:ltr;
+  color:#94a3b8;
+  font-size:11px;
+  line-height:1.5
+}
+
+.loading{
+  display:none;
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,.87);
+  backdrop-filter:blur(5px);
+  z-index:20;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:12px;
+  color:#475569;
+  font-size:13px;
+  font-weight:800
+}
+
+.loading.show{
+  display:flex
+}
+
+.spinner{
+  width:35px;
+  height:35px;
+  border:3px solid #e2e8f0;
+  border-top-color:#111827;
+  border-radius:50%;
+  animation:spin .7s linear infinite
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg)
+  }
+}
+
+@media(max-width:390px){
+  .card{
+    padding:18px;
+    border-radius:24px
+  }
+
+  .phone-row{
+    grid-template-columns:100px 1fr
+  }
+
+  .otp-row{
+    gap:5px
+  }
+
+  .otp{
+    height:53px;
+    font-size:22px
+  }
+
+  h1{
+    font-size:22px
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="app">
+
+<section class="card">
+
+<div class="topbar">
+
+<div class="brand">
+<div class="logo">D</div>
+
+<div>
+<div class="brand-name">Demo Portal</div>
+<div class="brand-sub">بيئة تجريبية آمنة</div>
+</div>
+</div>
+
+<div class="demo-badge">DEMO</div>
+
+</div>
+
+
+<div class="progress-info">
+<span id="progressText">الخطوة 1 من 3</span>
+<span id="progressPercent">33%</span>
+</div>
+
+<div class="progress-track">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+
+
+<!-- STEP 1 -->
+
+<section class="screen active" data-step="1">
+
+<div class="head">
+
+<div class="head-icon">👤</div>
+
+<h1>معلومات المستخدم</h1>
+
+<p>
+أدخل معلومات تجريبية للانتقال إلى الخطوة التالية.
+</p>
+
+</div>
+
+
+<div class="group">
+
+<label>الاسم الكامل</label>
+
+<input
+id="fullName"
+type="text"
+placeholder="مثال: أحمد محمد"
+autocomplete="off"
+maxlength="60"
+>
+
+<div class="error" id="nameError"></div>
+
+</div>
+
+
+<div class="group">
+
+<label>رقم الهاتف</label>
+
+<div class="phone-row">
+
+<select id="countryCode">
+
+<option value="+962">+962 🇯🇴</option>
+<option value="+995">+995 🇬🇪</option>
+<option value="+966">+966 🇸🇦</option>
+<option value="+971">+971 🇦🇪</option>
+<option value="+20">+20 🇪🇬</option>
+
+</select>
+
+<input
+id="phone"
+type="tel"
+inputmode="numeric"
+autocomplete="off"
+placeholder="79 123 4567"
+maxlength="14"
+>
+
+</div>
+
+<div class="error" id="phoneError"></div>
+
+</div>
+
+
+<button class="primary" id="next1">
+متابعة
+</button>
+
+</section>
+
+
+<!-- STEP 2 -->
+
+<section class="screen" data-step="2">
+
+<div class="head">
+
+<div class="head-icon">🔐</div>
+
+<h1>بيانات الدخول التجريبية</h1>
+
+<p>
+هذه البيانات للتجربة فقط ولا يتم إرسالها أو تخزينها.
+</p>
+
+</div>
+
+
+<div class="group">
+
+<label>اسم المستخدم التجريبي</label>
+
+<input
+id="username"
+type="text"
+placeholder="demo_user"
+autocomplete="off"
+maxlength="40"
+>
+
+<div class="error" id="userError"></div>
+
+</div>
+
+
+<div class="group">
+
+<label>كلمة المرور التجريبية</label>
+
+<div class="pass-wrap">
+
+<input
+id="password"
+type="password"
+placeholder="••••••••"
+autocomplete="new-password"
+maxlength="64"
+>
+
+<button
+class="eye"
+type="button"
+id="togglePassword"
+>
+👁
+</button>
+
+</div>
+
+<div class="error" id="passwordError"></div>
+
+</div>
+
+
+<button class="link" id="forgot">
+نسيت كلمة المرور؟ (تجريبي)
+</button>
+
+
+<div class="row-buttons">
+
+<button class="secondary" id="back1">
+رجوع
+</button>
+
+<button class="primary" id="next2">
+متابعة
+</button>
+
+</div>
+
+</section>
+
+
+<!-- STEP 3 -->
+
+<section class="screen" data-step="3">
+
+<div class="head">
+
+<div class="head-icon">🛡️</div>
+
+<h1>التحقق من الكود</h1>
+
+<p id="otpMessage">
+تم إرسال كود تحقق تجريبي.
+</p>
+
+</div>
+
+
+<div class="otp-row">
+
+<input class="otp" inputmode="numeric" maxlength="1">
+<input class="otp" inputmode="numeric" maxlength="1">
+<input class="otp" inputmode="numeric" maxlength="1">
+<input class="otp" inputmode="numeric" maxlength="1">
+<input class="otp" inputmode="numeric" maxlength="1">
+<input class="otp" inputmode="numeric" maxlength="1">
+
+</div>
+
+
+<div class="error center" id="otpError"></div>
+
+
+<div class="otp-tools">
+
+<span id="timer">
+01:59
+</span>
+
+<button
+class="link"
+id="resend"
+disabled
+>
+إعادة إرسال الكود
+</button>
+
+</div>
+
+
+<div class="hint">
+كود التجربة:
+<strong>123456</strong>
+</div>
+
+
+<div class="row-buttons">
+
+<button class="secondary" id="back2">
+رجوع
+</button>
+
+<button class="primary" id="verify">
+تحقق
+</button>
+
+</div>
+
+</section>
+
+
+<!-- SUCCESS -->
+
+<section class="screen" data-step="4">
+
+<div class="success">
+
+<div class="check">
+✓
+</div>
+
+<h2>
+تم التحقق بنجاح
+</h2>
+
+<p>
+اكتملت تجربة تسجيل الدخول بدون إرسال أي معلومات خارج الجهاز.
+</p>
+
+<button class="primary" id="restart">
+ابدأ من جديد
+</button>
+
+</div>
+
+</section>
+
+
+<div class="loading" id="loading">
+
+<div class="spinner"></div>
+
+<div>
+جاري المعالجة...
+</div>
+
+</div>
+
+
+<footer class="footer">
+
+Demo Environment — No information is stored or transmitted.
+
+</footer>
+
+</section>
+
+</main>
+
+
+<script>
+
+(() => {
+
+"use strict";
+
+
+/* منع أي اتصال خارجي */
+
+try{
+
+window.fetch = () =>
+Promise.reject(new Error("Network disabled"));
+
+window.XMLHttpRequest = undefined;
+
+window.WebSocket = undefined;
+
+}catch(e){}
+
+
+const screens =
+[...document.querySelectorAll(".screen")];
+
+const progressBar =
+document.getElementById("progressBar");
+
+const progressText =
+document.getElementById("progressText");
+
+const progressPercent =
+document.getElementById("progressPercent");
+
+const loading =
+document.getElementById("loading");
+
+
+const name =
+document.getElementById("fullName");
+
+const phone =
+document.getElementById("phone");
+
+const countryCode =
+document.getElementById("countryCode");
+
+const username =
+document.getElementById("username");
+
+const password =
+document.getElementById("password");
+
+
+const nameError =
+document.getElementById("nameError");
+
+const phoneError =
+document.getElementById("phoneError");
+
+const userError =
+document.getElementById("userError");
+
+const passwordError =
+document.getElementById("passwordError");
+
+const otpError =
+document.getElementById("otpError");
+
+
+const otpInputs =
+[...document.querySelectorAll(".otp")];
+
+const otpMessage =
+document.getElementById("otpMessage");
+
+const resend =
+document.getElementById("resend");
+
+const timer =
+document.getElementById("timer");
+
+
+let seconds = 119;
+
+let interval = null;
+
+
+function loader(callback){
+
+loading.classList.add("show");
+
+setTimeout(()=>{
+
+loading.classList.remove("show");
+
+callback();
+
+},650);
+
+}
+
+
+function go(step){
+
+screens.forEach(screen=>{
+
+screen.classList.toggle(
+"active",
+Number(screen.dataset.step) === step
+);
+
+});
+
+
+if(step <= 3){
+
+const percent =
+step * 33.333;
+
+progressBar.style.width =
+percent + "%";
+
+progressText.textContent =
+`الخطوة ${step} من 3`;
+
+progressPercent.textContent =
+Math.round(percent) + "%";
+
+}else{
+
+progressBar.style.width =
+"100%";
+
+progressText.textContent =
+"اكتملت التجربة";
+
+progressPercent.textContent =
+"100%";
+
+}
+
+
+if(step === 3){
+
+const digits =
+phone.value.replace(/\D/g,"");
+
+const last4 =
+digits.slice(-4).padStart(4,"*");
+
+otpMessage.textContent =
+`تم إرسال كود تحقق تجريبي إلى ${countryCode.value} ** *** ${last4}`;
+
+startTimer();
+
+setTimeout(()=>{
+
+otpInputs[0].focus();
+
+},150);
+
+}
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+function onlyDigits(value){
+
+return value.replace(/\D/g,"");
+
+}
+
+
+phone.addEventListener(
+"input",
+()=>{
+
+let digits =
+onlyDigits(phone.value)
+.slice(0,10);
+
+phone.value =
+digits.replace(
+/(\d{2})(\d{3})(\d{0,4})/,
+(_,a,b,c)=>
+[a,b,c]
+.filter(Boolean)
+.join(" ")
+);
+
+});
+
+
+document
+.getElementById("next1")
+.addEventListener(
+"click",
+()=>{
+
+nameError.textContent = "";
+
+phoneError.textContent = "";
+
+
+const validName =
+name.value.trim().length >= 3;
+
+const phoneDigits =
+onlyDigits(phone.value);
+
+const validPhone =
+phoneDigits.length >= 7;
+
+
+if(!validName){
+
+nameError.textContent =
+"اكتب اسمًا تجريبيًا من 3 أحرف على الأقل.";
+
+}
+
+
+if(!validPhone){
+
+phoneError.textContent =
+"اكتب رقم هاتف تجريبيًا صحيح الشكل.";
+
+}
+
+
+if(validName && validPhone){
+
+loader(()=>go(2));
+
+}
+
+});
+
+
+document
+.getElementById("next2")
+.addEventListener(
+"click",
+()=>{
+
+userError.textContent = "";
+
+passwordError.textContent = "";
+
+
+const validUser =
+username.value.trim().length >= 3;
+
+const validPassword =
+password.value.length >= 4;
+
+
+if(!validUser){
+
+userError.textContent =
+"اكتب اسم مستخدم تجريبيًا.";
+
+}
+
+
+if(!validPassword){
+
+passwordError.textContent =
+"كلمة المرور التجريبية يجب أن تكون 4 أحرف على الأقل.";
+
+}
+
+
+if(validUser && validPassword){
+
+loader(()=>go(3));
+
+}
+
+});
+
+
+document
+.getElementById("back1")
+.addEventListener(
+"click",
+()=>go(1)
+);
+
+
+document
+.getElementById("back2")
+.addEventListener(
+"click",
+()=>go(2)
+);
+
+
+document
+.getElementById("togglePassword")
+.addEventListener(
+"click",
+()=>{
+
+password.type =
+password.type === "password"
+? "text"
+: "password";
+
+});
+
+
+document
+.getElementById("forgot")
+.addEventListener(
+"click",
+()=>{
+
+passwordError.textContent =
+"خيار استرجاع كلمة المرور غير متصل بأي خدمة حقيقية.";
+
+});
+
+
+otpInputs.forEach(
+(input,index)=>{
+
+
+input.addEventListener(
+"input",
+()=>{
+
+input.value =
+onlyDigits(input.value)
+.slice(0,1);
+
+
+if(
+input.value &&
+index < otpInputs.length - 1
+){
+
+otpInputs[index+1]
+.focus();
+
+}
+
+});
+
+
+input.addEventListener(
+"keydown",
+event=>{
+
+if(
+event.key === "Backspace" &&
+!input.value &&
+index > 0
+){
+
+otpInputs[index-1]
+.focus();
+
+}
+
+});
+
+
+input.addEventListener(
+"paste",
+event=>{
+
+event.preventDefault();
+
+const text =
+onlyDigits(
+event.clipboardData
+.getData("text")
+)
+.slice(0,6);
+
+
+text.split("")
+.forEach(
+(char,i)=>{
+
+if(otpInputs[i]){
+
+otpInputs[i].value =
+char;
+
+}
+
+});
+
+
+otpInputs[
+Math.min(
+text.length,
+5
+)
+].focus();
+
+});
+
+});
+
+
+document
+.getElementById("verify")
+.addEventListener(
+"click",
+()=>{
+
+otpError.textContent = "";
+
+
+const code =
+otpInputs
+.map(input=>input.value)
+.join("");
+
+
+if(code.length !== 6){
+
+otpError.textContent =
+"أدخل الكود كاملًا.";
+
+return;
+
+}
+
+
+if(code !== "123456"){
+
+otpError.textContent =
+"الكود التجريبي غير صحيح. استخدم 123456.";
+
+return;
+
+}
+
+
+loader(()=>{
+
+clearTimer();
+
+password.value = "";
+
+otpInputs.forEach(
+input=>input.value=""
+);
+
+go(4);
+
+});
+
+});
+
+
+function drawTimer(){
+
+const minutes =
+String(
+Math.floor(seconds/60)
+)
+.padStart(2,"0");
+
+const secs =
+String(seconds%60)
+.padStart(2,"0");
+
+timer.textContent =
+`${minutes}:${secs}`;
+
+}
+
+
+function clearTimer(){
+
+if(interval){
+
+clearInterval(interval);
+
+interval = null;
+
+}
+
+}
+
+
+function startTimer(){
+
+clearTimer();
+
+seconds = 119;
+
+resend.disabled = true;
+
+drawTimer();
+
+
+interval =
+setInterval(()=>{
+
+seconds--;
+
+drawTimer();
+
+
+if(seconds <= 0){
+
+clearTimer();
+
+resend.disabled = false;
+
+}
+
+},1000);
+
+}
+
+
+resend.addEventListener(
+"click",
+()=>{
+
+otpInputs.forEach(
+input=>input.value=""
+);
+
+otpError.textContent = "";
+
+startTimer();
+
+otpInputs[0].focus();
+
+});
+
+
+document
+.getElementById("restart")
+.addEventListener(
+"click",
+()=>{
+
+clearTimer();
+
+name.value = "";
+
+phone.value = "";
+
+username.value = "";
+
+password.value = "";
+
+password.type =
+"password";
+
+
+otpInputs.forEach(
+input=>input.value=""
+);
+
+
+[
+nameError,
+phoneError,
+userError,
+passwordError,
+otpError
+].forEach(
+error=>error.textContent=""
+);
+
+
+go(1);
+
+});
+
+
+document.addEventListener(
+"keydown",
+event=>{
+
+if(
+event.key === "Enter" &&
+event.target.tagName === "INPUT"
+){
+
+event.preventDefault();
+
+}
+
+});
+
+
+})();
+
+</script>
+
+</body>
+</html>
