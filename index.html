@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#f8fafc">
+<meta name="theme-color" content="#ffffff">
 <meta name="robots" content="noindex,nofollow">
 
 <meta http-equiv="Content-Security-Policy"
@@ -14,30 +14,29 @@ form-action 'none';
 object-src 'none';
 frame-ancestors 'none';">
 
-<title>Demo Verification</title>
+<title>Zain Demo</title>
 
 <style>
-*{
-  box-sizing:border-box
-}
+*{box-sizing:border-box}
 
 :root{
-  --bg:#eef2f7;
-  --card:#fff;
-  --text:#0f172a;
-  --muted:#64748b;
-  --line:#e2e8f0;
-  --primary:#111827;
-  --danger:#b91c1c;
-  --success:#047857;
+  --purple:#5a189a;
+  --purple2:#7b2cbf;
+  --purple3:#9d4edd;
+  --ink:#18181b;
+  --muted:#71717a;
+  --line:#ece7f2;
+  --soft:#faf7fd;
+  --danger:#b42318;
+  --success:#067647;
 }
 
 html,body{
   margin:0;
   min-height:100%;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;
-  background:linear-gradient(180deg,#f8fafc,#eef2f7);
-  color:var(--text)
+  background:#fff;
+  color:var(--ink)
 }
 
 body{
@@ -52,144 +51,174 @@ button,input,select{
 .app{
   min-height:100vh;
   min-height:100dvh;
-  display:grid;
-  place-items:center;
-  padding:
-    max(18px,env(safe-area-inset-top))
-    14px
-    max(18px,env(safe-area-inset-bottom))
+  display:flex;
+  flex-direction:column;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(157,78,221,.10), transparent 28%),
+    linear-gradient(180deg,#fff 0%,#fff 72%,#faf7fd 100%)
 }
 
-.card{
-  width:100%;
-  max-width:430px;
-  background:rgba(255,255,255,.98);
-  border:1px solid rgba(15,23,42,.06);
-  border-radius:28px;
-  padding:22px;
-  box-shadow:0 24px 65px rgba(15,23,42,.15);
-  position:relative;
-  overflow:hidden
-}
-
-.topbar{
+.header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin-bottom:20px
+  padding:max(18px,env(safe-area-inset-top)) 20px 16px;
+  border-bottom:1px solid #f2eef6;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(10px)
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:12px
+  gap:11px
 }
 
 .logo{
   width:46px;
   height:46px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--purple3));
   display:grid;
   place-items:center;
-  border-radius:15px;
-  background:#111827;
   color:#fff;
-  font-size:21px;
-  font-weight:900
+  font-weight:900;
+  font-size:20px;
+  box-shadow:0 8px 20px rgba(90,24,154,.22)
 }
 
 .brand-name{
+  font-size:22px;
   font-weight:900;
-  font-size:16px
+  letter-spacing:-.5px
+}
+
+.brand-name span{
+  color:var(--purple)
 }
 
 .brand-sub{
-  color:#64748b;
-  font-size:12px;
-  margin-top:2px
+  color:var(--muted);
+  font-size:11px;
+  margin-top:1px
 }
 
-.demo-badge{
+.demo-chip{
+  border:1px solid #e8dff0;
+  background:#faf7fd;
+  color:var(--purple);
   padding:7px 10px;
   border-radius:999px;
-  background:#f1f5f9;
-  border:1px solid #e2e8f0;
   font-size:11px;
-  font-weight:900;
-  color:#475569
+  font-weight:800
 }
 
-.progress-info{
+.main{
+  width:100%;
+  max-width:460px;
+  margin:0 auto;
+  padding:28px 18px 24px;
+  flex:1
+}
+
+.hero{
+  text-align:center;
+  margin-bottom:26px
+}
+
+.hero-badge{
+  width:66px;
+  height:66px;
+  border-radius:22px;
+  margin:0 auto 14px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,#f6ecff,#efe0ff);
+  color:var(--purple);
+  font-size:28px;
+  border:1px solid #ead8f8
+}
+
+.hero h1{
+  margin:0;
+  font-size:31px;
+  line-height:1.25;
+  letter-spacing:-.7px
+}
+
+.hero p{
+  margin:10px auto 0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+  max-width:330px
+}
+
+.progress-meta{
   display:flex;
   justify-content:space-between;
   font-size:12px;
-  color:#64748b;
+  color:#8b7b96;
   margin-bottom:8px
 }
 
 .progress-track{
   height:7px;
-  background:#e5eaf0;
-  border-radius:99px;
+  background:#f0e8f6;
+  border-radius:999px;
   overflow:hidden;
-  margin-bottom:24px
+  margin-bottom:22px
 }
 
 .progress-bar{
   height:100%;
   width:33.333%;
-  border-radius:99px;
-  background:linear-gradient(90deg,#111827,#334155);
-  transition:.35s
+  border-radius:inherit;
+  background:linear-gradient(90deg,var(--purple),var(--purple3));
+  transition:.3s
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:0 18px 50px rgba(67,24,91,.08);
+  position:relative;
+  overflow:hidden
 }
 
 .screen{
   display:none;
-  animation:enter .32s ease
+  animation:fade .28s ease
 }
 
 .screen.active{
   display:block
 }
 
-@keyframes enter{
+@keyframes fade{
   from{
     opacity:0;
-    transform:translateY(10px)
+    transform:translateY(8px)
   }
+
   to{
     opacity:1;
     transform:translateY(0)
   }
 }
 
-.head{
-  text-align:center;
-  margin-bottom:23px
+.section-title{
+  margin:0 0 5px;
+  font-size:21px;
+  font-weight:900
 }
 
-.head-icon{
-  width:60px;
-  height:60px;
-  display:grid;
-  place-items:center;
-  border-radius:19px;
-  margin:0 auto 12px;
-  background:#f8fafc;
-  border:1px solid #e2e8f0;
-  font-size:25px
-}
-
-h1{
-  margin:0;
-  font-size:25px;
-  letter-spacing:-.5px
-}
-
-.head p{
-  margin:8px auto 0;
-  max-width:330px;
-  color:#64748b;
-  font-size:14px;
+.section-desc{
+  margin:0 0 20px;
+  color:var(--muted);
+  font-size:13px;
   line-height:1.7
 }
 
@@ -199,28 +228,29 @@ h1{
 
 label{
   display:block;
-  margin-bottom:8px;
   font-size:13px;
   font-weight:800;
-  color:#334155
+  margin-bottom:8px;
+  color:#3f3347
 }
 
 input,select{
   width:100%;
   height:54px;
-  border:1px solid #dbe3ec;
+  border:1px solid #e4dce9;
   border-radius:15px;
-  background:#f8fafc;
+  background:#fcfaff;
+  color:#18181b;
   padding:0 15px;
   outline:none;
-  color:#111827;
-  transition:.2s
+  transition:.18s
 }
 
-input:focus,select:focus{
+input:focus,
+select:focus{
+  border-color:#b78bd6;
   background:#fff;
-  border-color:#94a3b8;
-  box-shadow:0 0 0 4px rgba(15,23,42,.06)
+  box-shadow:0 0 0 4px rgba(123,44,191,.08)
 }
 
 .phone-row{
@@ -229,85 +259,87 @@ input:focus,select:focus{
   gap:9px
 }
 
-.error{
-  min-height:18px;
-  color:#b91c1c;
-  font-size:12px;
-  margin-top:6px
-}
-
 .pass-wrap{
   position:relative
 }
 
 .pass-wrap input{
-  padding-left:55px
+  padding-left:52px
 }
 
 .eye{
-  width:42px;
-  height:42px;
   position:absolute;
   left:6px;
   top:6px;
+  width:42px;
+  height:42px;
   border:0;
   background:transparent;
   border-radius:12px;
   cursor:pointer
 }
 
-.primary,.secondary{
+.error{
+  min-height:18px;
+  margin-top:6px;
+  color:var(--danger);
+  font-size:12px
+}
+
+.primary,
+.secondary{
   height:54px;
   border-radius:15px;
+  border:0;
   font-weight:850;
-  cursor:pointer;
-  border:0
+  cursor:pointer
 }
 
 .primary{
   width:100%;
-  background:#111827;
-  color:white;
-  box-shadow:0 10px 25px rgba(15,23,42,.14)
+  background:linear-gradient(90deg,var(--purple),var(--purple2));
+  color:#fff;
+  box-shadow:0 10px 24px rgba(90,24,154,.18)
 }
 
 .secondary{
-  background:#f1f5f9;
-  color:#111827;
-  border:1px solid #e2e8f0
+  background:#f7f1fb;
+  color:var(--purple);
+  border:1px solid #eadff1
 }
 
-.primary:active,.secondary:active{
+.primary:active,
+.secondary:active{
   transform:scale(.99)
 }
 
-.row-buttons{
+.buttons{
   display:grid;
-  grid-template-columns:1fr 1.8fr;
+  grid-template-columns:1fr 1.7fr;
   gap:10px;
-  margin-top:10px
+  margin-top:8px
 }
 
 .link{
-  background:none;
   border:0;
-  padding:4px 0;
+  background:none;
+  color:var(--purple);
   font-size:13px;
-  font-weight:750;
-  color:#475569;
+  font-weight:800;
+  padding:4px 0;
   cursor:pointer
 }
 
 .link:disabled{
-  color:#cbd5e1
+  color:#c7b8d2
 }
 
 .otp-row{
+  direction:ltr;
   display:grid;
   grid-template-columns:repeat(6,1fr);
   gap:7px;
-  direction:ltr;
-  margin:23px 0 8px
+  margin:20px 0 8px
 }
 
 .otp{
@@ -319,102 +351,88 @@ input:focus,select:focus{
   border-radius:14px
 }
 
-.center{
-  text-align:center
-}
-
 .otp-tools{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin:10px 0 15px;
-  color:#64748b;
-  font-size:13px
+  font-size:13px;
+  color:var(--muted);
+  margin:9px 0 15px
 }
 
 .hint{
-  padding:12px;
-  margin-bottom:15px;
-  text-align:center;
+  background:#faf7fd;
+  border:1px dashed #d7c5e5;
+  color:#6c5a78;
   border-radius:14px;
-  background:#f8fafc;
-  border:1px dashed #cbd5e1;
-  color:#475569;
-  font-size:13px
+  padding:11px 12px;
+  text-align:center;
+  font-size:13px;
+  margin-bottom:15px
 }
 
 .success{
   text-align:center;
-  padding:28px 4px 10px
+  padding:24px 2px 8px
 }
 
 .check{
   width:82px;
   height:82px;
+  border-radius:50%;
   display:grid;
   place-items:center;
-  border-radius:50%;
-  margin:0 auto 18px;
-  background:#ecfdf5;
-  border:1px solid #a7f3d0;
-  color:#047857;
-  font-size:39px;
-  font-weight:900;
-  animation:pop .4s ease
-}
-
-@keyframes pop{
-  from{
-    transform:scale(.6);
-    opacity:0
-  }
-  70%{
-    transform:scale(1.08)
-  }
-  to{
-    transform:scale(1);
-    opacity:1
-  }
+  margin:0 auto 16px;
+  background:#ecfdf3;
+  color:var(--success);
+  border:1px solid #abefc6;
+  font-size:38px;
+  font-weight:900
 }
 
 .success h2{
-  font-size:25px;
-  margin:0
+  margin:0;
+  font-size:24px
 }
 
 .success p{
-  color:#64748b;
+  color:var(--muted);
   font-size:14px;
   line-height:1.7
 }
 
 .success .primary{
-  margin-top:16px
+  margin-top:14px
 }
 
-.footer{
-  margin-top:21px;
-  padding-top:14px;
-  border-top:1px solid #e2e8f0;
-  text-align:center;
-  direction:ltr;
-  color:#94a3b8;
+.notice{
+  margin-top:17px;
+  background:#fbf9fc;
+  border:1px solid #eee7f2;
+  border-radius:15px;
+  padding:12px 13px;
+  color:#7c6d85;
   font-size:11px;
-  line-height:1.5
+  line-height:1.6;
+  text-align:center
+}
+
+.notice strong{
+  color:var(--purple)
 }
 
 .loading{
   display:none;
   position:absolute;
   inset:0;
-  background:rgba(255,255,255,.87);
-  backdrop-filter:blur(5px);
-  z-index:20;
+  z-index:30;
+  background:rgba(255,255,255,.89);
+  backdrop-filter:blur(4px);
   align-items:center;
   justify-content:center;
   flex-direction:column;
   gap:12px;
-  color:#475569;
+  color:#6b5a75;
   font-size:13px;
   font-weight:800
 }
@@ -426,9 +444,9 @@ input:focus,select:focus{
 .spinner{
   width:35px;
   height:35px;
-  border:3px solid #e2e8f0;
-  border-top-color:#111827;
   border-radius:50%;
+  border:3px solid #eee5f4;
+  border-top-color:var(--purple);
   animation:spin .7s linear infinite
 }
 
@@ -438,10 +456,28 @@ input:focus,select:focus{
   }
 }
 
+.footer{
+  text-align:center;
+  color:#a192ab;
+  font-size:10px;
+  line-height:1.6;
+  padding:0 20px max(20px,env(safe-area-inset-bottom))
+}
+
 @media(max-width:390px){
+
+  .main{
+    padding-left:12px;
+    padding-right:12px
+  }
+
   .card{
     padding:18px;
-    border-radius:24px
+    border-radius:21px
+  }
+
+  .hero h1{
+    font-size:27px
   }
 
   .phone-row{
@@ -457,318 +493,491 @@ input:focus,select:focus{
     font-size:22px
   }
 
-  h1{
-    font-size:22px
-  }
 }
 </style>
 </head>
 
 <body>
 
-<main class="app">
+<div class="app">
 
-<section class="card">
+<header class="header">
 
-<div class="topbar">
+  <div class="brand">
 
-<div class="brand">
-<div class="logo">D</div>
+    <div class="logo">
+      Z
+    </div>
 
-<div>
-<div class="brand-name">Demo Portal</div>
-<div class="brand-sub">بيئة تجريبية آمنة</div>
-</div>
-</div>
+    <div>
+      <div class="brand-name">
+        <span>Zain</span> Demo
+      </div>
 
-<div class="demo-badge">DEMO</div>
+      <div class="brand-sub">
+        Unofficial testing interface
+      </div>
+    </div>
 
-</div>
+  </div>
 
+  <div class="demo-chip">
+    DEMO
+  </div>
 
-<div class="progress-info">
-<span id="progressText">الخطوة 1 من 3</span>
-<span id="progressPercent">33%</span>
-</div>
+</header>
 
-<div class="progress-track">
-<div class="progress-bar" id="progressBar"></div>
-</div>
 
+<main class="main">
 
-<!-- STEP 1 -->
+  <div class="hero">
 
-<section class="screen active" data-step="1">
+    <div class="hero-badge">
+      ⚡
+    </div>
 
-<div class="head">
+    <h1>
+      أبسط وأسرع تجربة تسجيل
+    </h1>
 
-<div class="head-icon">👤</div>
+    <p>
+      واجهة تجريبية مستوحاة من أسلوب تطبيقات المحافظ الرقمية الحديثة.
+    </p>
 
-<h1>معلومات المستخدم</h1>
+  </div>
 
-<p>
-أدخل معلومات تجريبية للانتقال إلى الخطوة التالية.
-</p>
 
-</div>
+  <div class="progress-meta">
 
+    <span id="progressText">
+      الخطوة 1 من 3
+    </span>
 
-<div class="group">
+    <span id="progressPercent">
+      33%
+    </span>
 
-<label>الاسم الكامل</label>
+  </div>
 
-<input
-id="fullName"
-type="text"
-placeholder="مثال: أحمد محمد"
-autocomplete="off"
-maxlength="60"
->
 
-<div class="error" id="nameError"></div>
+  <div class="progress-track">
 
-</div>
+    <div
+      class="progress-bar"
+      id="progressBar">
+    </div>
 
+  </div>
 
-<div class="group">
 
-<label>رقم الهاتف</label>
+  <section class="card">
 
-<div class="phone-row">
 
-<select id="countryCode">
+    <!-- STEP 1 -->
 
-<option value="+962">+962 🇯🇴</option>
-<option value="+995">+995 🇬🇪</option>
-<option value="+966">+966 🇸🇦</option>
-<option value="+971">+971 🇦🇪</option>
-<option value="+20">+20 🇪🇬</option>
+    <section
+      class="screen active"
+      data-step="1">
 
-</select>
+      <h2 class="section-title">
+        معلومات المستخدم
+      </h2>
 
-<input
-id="phone"
-type="tel"
-inputmode="numeric"
-autocomplete="off"
-placeholder="79 123 4567"
-maxlength="14"
->
+      <p class="section-desc">
+        استخدم معلومات تجريبية فقط للانتقال إلى الخطوة التالية.
+      </p>
 
-</div>
 
-<div class="error" id="phoneError"></div>
+      <div class="group">
 
-</div>
+        <label>
+          الاسم الكامل
+        </label>
 
+        <input
+          id="fullName"
+          type="text"
+          autocomplete="off"
+          placeholder="مثال: أحمد محمد"
+          maxlength="60">
 
-<button class="primary" id="next1">
-متابعة
-</button>
+        <div
+          class="error"
+          id="nameError">
+        </div>
 
-</section>
+      </div>
 
 
-<!-- STEP 2 -->
+      <div class="group">
 
-<section class="screen" data-step="2">
+        <label>
+          رقم الهاتف
+        </label>
 
-<div class="head">
 
-<div class="head-icon">🔐</div>
+        <div class="phone-row">
 
-<h1>بيانات الدخول التجريبية</h1>
+          <select id="countryCode">
 
-<p>
-هذه البيانات للتجربة فقط ولا يتم إرسالها أو تخزينها.
-</p>
+            <option value="+962">
+              +962
+            </option>
 
-</div>
+            <option value="+995">
+              +995
+            </option>
 
+            <option value="+966">
+              +966
+            </option>
 
-<div class="group">
+            <option value="+971">
+              +971
+            </option>
 
-<label>اسم المستخدم التجريبي</label>
+            <option value="+20">
+              +20
+            </option>
 
-<input
-id="username"
-type="text"
-placeholder="demo_user"
-autocomplete="off"
-maxlength="40"
->
+          </select>
 
-<div class="error" id="userError"></div>
 
-</div>
+          <input
+            id="phone"
+            type="tel"
+            inputmode="numeric"
+            autocomplete="off"
+            placeholder="79 123 4567"
+            maxlength="14">
 
+        </div>
 
-<div class="group">
 
-<label>كلمة المرور التجريبية</label>
+        <div
+          class="error"
+          id="phoneError">
+        </div>
 
-<div class="pass-wrap">
+      </div>
 
-<input
-id="password"
-type="password"
-placeholder="••••••••"
-autocomplete="new-password"
-maxlength="64"
->
 
-<button
-class="eye"
-type="button"
-id="togglePassword"
->
-👁
-</button>
+      <button
+        class="primary"
+        id="next1">
+        متابعة
+      </button>
 
-</div>
+    </section>
 
-<div class="error" id="passwordError"></div>
 
-</div>
 
+    <!-- STEP 2 -->
 
-<button class="link" id="forgot">
-نسيت كلمة المرور؟ (تجريبي)
-</button>
+    <section
+      class="screen"
+      data-step="2">
 
+      <h2 class="section-title">
+        بيانات الدخول التجريبية
+      </h2>
 
-<div class="row-buttons">
+      <p class="section-desc">
+        هذه البيانات لا يتم إرسالها أو تخزينها.
+      </p>
 
-<button class="secondary" id="back1">
-رجوع
-</button>
 
-<button class="primary" id="next2">
-متابعة
-</button>
+      <div class="group">
 
-</div>
+        <label>
+          اسم المستخدم التجريبي
+        </label>
 
-</section>
+        <input
+          id="username"
+          type="text"
+          autocomplete="off"
+          placeholder="demo_user"
+          maxlength="40">
 
+        <div
+          class="error"
+          id="userError">
+        </div>
 
-<!-- STEP 3 -->
+      </div>
 
-<section class="screen" data-step="3">
 
-<div class="head">
+      <div class="group">
 
-<div class="head-icon">🛡️</div>
+        <label>
+          كلمة المرور التجريبية
+        </label>
 
-<h1>التحقق من الكود</h1>
 
-<p id="otpMessage">
-تم إرسال كود تحقق تجريبي.
-</p>
+        <div class="pass-wrap">
 
-</div>
+          <input
+            id="password"
+            type="password"
+            autocomplete="new-password"
+            placeholder="••••••••"
+            maxlength="64">
 
 
-<div class="otp-row">
+          <button
+            class="eye"
+            type="button"
+            id="togglePassword">
+            👁
+          </button>
 
-<input class="otp" inputmode="numeric" maxlength="1">
-<input class="otp" inputmode="numeric" maxlength="1">
-<input class="otp" inputmode="numeric" maxlength="1">
-<input class="otp" inputmode="numeric" maxlength="1">
-<input class="otp" inputmode="numeric" maxlength="1">
-<input class="otp" inputmode="numeric" maxlength="1">
+        </div>
 
-</div>
 
+        <div
+          class="error"
+          id="passwordError">
+        </div>
 
-<div class="error center" id="otpError"></div>
+      </div>
 
 
-<div class="otp-tools">
+      <button
+        class="link"
+        type="button"
+        id="forgot">
 
-<span id="timer">
-01:59
-</span>
+        نسيت كلمة المرور؟ (تجريبي)
 
-<button
-class="link"
-id="resend"
-disabled
->
-إعادة إرسال الكود
-</button>
+      </button>
 
-</div>
 
+      <div class="buttons">
 
-<div class="hint">
-كود التجربة:
-<strong>123456</strong>
-</div>
+        <button
+          class="secondary"
+          id="back1">
 
+          رجوع
 
-<div class="row-buttons">
+        </button>
 
-<button class="secondary" id="back2">
-رجوع
-</button>
 
-<button class="primary" id="verify">
-تحقق
-</button>
+        <button
+          class="primary"
+          id="next2">
 
-</div>
+          متابعة
 
-</section>
+        </button>
 
+      </div>
 
-<!-- SUCCESS -->
+    </section>
 
-<section class="screen" data-step="4">
 
-<div class="success">
 
-<div class="check">
-✓
-</div>
+    <!-- STEP 3 -->
 
-<h2>
-تم التحقق بنجاح
-</h2>
+    <section
+      class="screen"
+      data-step="3">
 
-<p>
-اكتملت تجربة تسجيل الدخول بدون إرسال أي معلومات خارج الجهاز.
-</p>
+      <h2 class="section-title">
+        التحقق من الكود
+      </h2>
 
-<button class="primary" id="restart">
-ابدأ من جديد
-</button>
 
-</div>
+      <p
+        class="section-desc"
+        id="otpMessage">
 
-</section>
+        تم إرسال كود تحقق تجريبي.
 
+      </p>
 
-<div class="loading" id="loading">
 
-<div class="spinner"></div>
+      <div class="otp-row">
 
-<div>
-جاري المعالجة...
-</div>
+        <input
+          class="otp"
+          inputmode="numeric"
+          maxlength="1">
 
-</div>
+        <input
+          class="otp"
+          inputmode="numeric"
+          maxlength="1">
+
+        <input
+          class="otp"
+          inputmode="numeric"
+          maxlength="1">
+
+        <input
+          class="otp"
+          inputmode="numeric"
+          maxlength="1">
+
+        <input
+          class="otp"
+          inputmode="numeric"
+          maxlength="1">
+
+        <input
+          class="otp"
+          inputmode="numeric"
+          maxlength="1">
+
+      </div>
+
+
+      <div
+        class="error"
+        style="text-align:center"
+        id="otpError">
+      </div>
+
+
+      <div class="otp-tools">
+
+        <span id="timer">
+          01:59
+        </span>
+
+
+        <button
+          class="link"
+          id="resend"
+          disabled>
+
+          إعادة إرسال الكود
+
+        </button>
+
+      </div>
+
+
+      <div class="hint">
+
+        كود التجربة:
+
+        <strong>
+          123456
+        </strong>
+
+      </div>
+
+
+      <div class="buttons">
+
+        <button
+          class="secondary"
+          id="back2">
+
+          رجوع
+
+        </button>
+
+
+        <button
+          class="primary"
+          id="verify">
+
+          تحقق
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- SUCCESS -->
+
+    <section
+      class="screen"
+      data-step="4">
+
+
+      <div class="success">
+
+
+        <div class="check">
+          ✓
+        </div>
+
+
+        <h2>
+          تم التحقق بنجاح
+        </h2>
+
+
+        <p>
+          اكتملت التجربة بدون إرسال أي معلومات خارج الجهاز.
+        </p>
+
+
+        <button
+          class="primary"
+          id="restart">
+
+          ابدأ من جديد
+
+        </button>
+
+
+      </div>
+
+    </section>
+
+
+
+    <div
+      class="loading"
+      id="loading">
+
+
+      <div class="spinner"></div>
+
+
+      <div>
+        جاري المعالجة...
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+  <div class="notice">
+
+    <strong>
+      Zain Demo
+    </strong>
+
+    — واجهة تجريبية غير رسمية.
+    لا يتم تخزين أو إرسال أي معلومات.
+
+  </div>
+
+
+</main>
 
 
 <footer class="footer">
 
-Demo Environment — No information is stored or transmitted.
+  Unofficial demo interface.
+  Not affiliated with or operated by Zain Cash.
 
 </footer>
 
-</section>
 
-</main>
+</div>
 
 
 <script>
@@ -782,595 +991,926 @@ Demo Environment — No information is stored or transmitted.
 
 try{
 
-window.fetch = () =>
-Promise.reject(new Error("Network disabled"));
+  window.fetch =
+  () =>
+  Promise.reject(
+    new Error("Network disabled")
+  );
 
-window.XMLHttpRequest = undefined;
 
-window.WebSocket = undefined;
+  window.XMLHttpRequest =
+  undefined;
+
+
+  window.WebSocket =
+  undefined;
 
 }catch(e){}
 
 
 const screens =
-[...document.querySelectorAll(".screen")];
+[
+  ...document.querySelectorAll(".screen")
+];
+
 
 const progressBar =
-document.getElementById("progressBar");
+document.getElementById(
+  "progressBar"
+);
+
 
 const progressText =
-document.getElementById("progressText");
+document.getElementById(
+  "progressText"
+);
+
 
 const progressPercent =
-document.getElementById("progressPercent");
+document.getElementById(
+  "progressPercent"
+);
+
 
 const loading =
-document.getElementById("loading");
+document.getElementById(
+  "loading"
+);
 
 
-const name =
-document.getElementById("fullName");
+const fullName =
+document.getElementById(
+  "fullName"
+);
+
 
 const phone =
-document.getElementById("phone");
+document.getElementById(
+  "phone"
+);
+
 
 const countryCode =
-document.getElementById("countryCode");
+document.getElementById(
+  "countryCode"
+);
+
 
 const username =
-document.getElementById("username");
+document.getElementById(
+  "username"
+);
+
 
 const password =
-document.getElementById("password");
+document.getElementById(
+  "password"
+);
 
 
 const nameError =
-document.getElementById("nameError");
+document.getElementById(
+  "nameError"
+);
+
 
 const phoneError =
-document.getElementById("phoneError");
+document.getElementById(
+  "phoneError"
+);
+
 
 const userError =
-document.getElementById("userError");
+document.getElementById(
+  "userError"
+);
+
 
 const passwordError =
-document.getElementById("passwordError");
+document.getElementById(
+  "passwordError"
+);
+
 
 const otpError =
-document.getElementById("otpError");
+document.getElementById(
+  "otpError"
+);
 
 
 const otpInputs =
-[...document.querySelectorAll(".otp")];
+[
+  ...document.querySelectorAll(".otp")
+];
+
 
 const otpMessage =
-document.getElementById("otpMessage");
+document.getElementById(
+  "otpMessage"
+);
+
 
 const resend =
-document.getElementById("resend");
+document.getElementById(
+  "resend"
+);
+
 
 const timer =
-document.getElementById("timer");
+document.getElementById(
+  "timer"
+);
 
 
-let seconds = 119;
+let seconds =
+119;
 
-let interval = null;
+
+let interval =
+null;
 
 
-function loader(callback){
 
-loading.classList.add("show");
+function showLoading(callback){
 
-setTimeout(()=>{
+  loading.classList.add(
+    "show"
+  );
 
-loading.classList.remove("show");
 
-callback();
+  setTimeout(
+    ()=>{
 
-},650);
+      loading.classList.remove(
+        "show"
+      );
+
+
+      callback();
+
+    },
+    650
+  );
 
 }
+
 
 
 function go(step){
 
-screens.forEach(screen=>{
+  screens.forEach(
+    screen=>{
 
-screen.classList.toggle(
-"active",
-Number(screen.dataset.step) === step
-);
+      screen.classList.toggle(
+        "active",
+        Number(
+          screen.dataset.step
+        ) === step
+      );
 
-});
+    }
+  );
 
 
-if(step <= 3){
+  if(step <= 3){
 
-const percent =
-step * 33.333;
+    const pct =
+    step * 33.333;
 
-progressBar.style.width =
-percent + "%";
 
-progressText.textContent =
-`الخطوة ${step} من 3`;
+    progressBar.style.width =
+    pct + "%";
 
-progressPercent.textContent =
-Math.round(percent) + "%";
 
-}else{
+    progressText.textContent =
+    `الخطوة ${step} من 3`;
 
-progressBar.style.width =
-"100%";
 
-progressText.textContent =
-"اكتملت التجربة";
+    progressPercent.textContent =
+    Math.round(pct) + "%";
 
-progressPercent.textContent =
-"100%";
+  }
+
+  else{
+
+    progressBar.style.width =
+    "100%";
+
+
+    progressText.textContent =
+    "اكتملت التجربة";
+
+
+    progressPercent.textContent =
+    "100%";
+
+  }
+
+
+  if(step === 3){
+
+    const digits =
+    phone.value.replace(
+      /\D/g,
+      ""
+    );
+
+
+    const last4 =
+    digits
+    .slice(-4)
+    .padStart(
+      4,
+      "*"
+    );
+
+
+    otpMessage.textContent =
+    `تم إرسال كود تحقق تجريبي إلى ${countryCode.value} ** *** ${last4}`;
+
+
+    startTimer();
+
+
+    setTimeout(
+      ()=>{
+
+        otpInputs[0]
+        .focus();
+
+      },
+      150
+    );
+
+  }
+
+
+  window.scrollTo({
+
+    top:0,
+
+    behavior:"smooth"
+
+  });
 
 }
 
-
-if(step === 3){
-
-const digits =
-phone.value.replace(/\D/g,"");
-
-const last4 =
-digits.slice(-4).padStart(4,"*");
-
-otpMessage.textContent =
-`تم إرسال كود تحقق تجريبي إلى ${countryCode.value} ** *** ${last4}`;
-
-startTimer();
-
-setTimeout(()=>{
-
-otpInputs[0].focus();
-
-},150);
-
-}
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
 
 
 function onlyDigits(value){
 
-return value.replace(/\D/g,"");
+  return value.replace(
+    /\D/g,
+    ""
+  );
 
 }
+
 
 
 phone.addEventListener(
-"input",
-()=>{
 
-let digits =
-onlyDigits(phone.value)
-.slice(0,10);
+  "input",
 
-phone.value =
-digits.replace(
-/(\d{2})(\d{3})(\d{0,4})/,
-(_,a,b,c)=>
-[a,b,c]
-.filter(Boolean)
-.join(" ")
-);
+  ()=>{
 
-});
+    const digits =
+    onlyDigits(
+      phone.value
+    )
+    .slice(
+      0,
+      10
+    );
 
 
-document
-.getElementById("next1")
-.addEventListener(
-"click",
-()=>{
+    phone.value =
+    digits.replace(
 
-nameError.textContent = "";
+      /(\d{2})(\d{3})(\d{0,4})/,
 
-phoneError.textContent = "";
+      (_,a,b,c)=>
+      [a,b,c]
+      .filter(Boolean)
+      .join(" ")
 
+    );
 
-const validName =
-name.value.trim().length >= 3;
+  }
 
-const phoneDigits =
-onlyDigits(phone.value);
-
-const validPhone =
-phoneDigits.length >= 7;
-
-
-if(!validName){
-
-nameError.textContent =
-"اكتب اسمًا تجريبيًا من 3 أحرف على الأقل.";
-
-}
-
-
-if(!validPhone){
-
-phoneError.textContent =
-"اكتب رقم هاتف تجريبيًا صحيح الشكل.";
-
-}
-
-
-if(validName && validPhone){
-
-loader(()=>go(2));
-
-}
-
-});
-
-
-document
-.getElementById("next2")
-.addEventListener(
-"click",
-()=>{
-
-userError.textContent = "";
-
-passwordError.textContent = "";
-
-
-const validUser =
-username.value.trim().length >= 3;
-
-const validPassword =
-password.value.length >= 4;
-
-
-if(!validUser){
-
-userError.textContent =
-"اكتب اسم مستخدم تجريبيًا.";
-
-}
-
-
-if(!validPassword){
-
-passwordError.textContent =
-"كلمة المرور التجريبية يجب أن تكون 4 أحرف على الأقل.";
-
-}
-
-
-if(validUser && validPassword){
-
-loader(()=>go(3));
-
-}
-
-});
-
-
-document
-.getElementById("back1")
-.addEventListener(
-"click",
-()=>go(1)
 );
 
 
+
 document
-.getElementById("back2")
+.getElementById(
+  "next1"
+)
 .addEventListener(
-"click",
-()=>go(2)
+
+  "click",
+
+  ()=>{
+
+    nameError.textContent =
+    "";
+
+
+    phoneError.textContent =
+    "";
+
+
+    const nameOK =
+    fullName
+    .value
+    .trim()
+    .length >= 3;
+
+
+    const phoneOK =
+    onlyDigits(
+      phone.value
+    )
+    .length >= 7;
+
+
+    if(!nameOK){
+
+      nameError.textContent =
+      "اكتب اسمًا تجريبيًا من 3 أحرف على الأقل.";
+
+    }
+
+
+    if(!phoneOK){
+
+      phoneError.textContent =
+      "اكتب رقم هاتف تجريبيًا صحيح الشكل.";
+
+    }
+
+
+    if(
+      nameOK &&
+      phoneOK
+    ){
+
+      showLoading(
+        ()=>go(2)
+      );
+
+    }
+
+  }
+
 );
 
 
-document
-.getElementById("togglePassword")
-.addEventListener(
-"click",
-()=>{
-
-password.type =
-password.type === "password"
-? "text"
-: "password";
-
-});
-
 
 document
-.getElementById("forgot")
+.getElementById(
+  "next2"
+)
 .addEventListener(
-"click",
-()=>{
 
-passwordError.textContent =
-"خيار استرجاع كلمة المرور غير متصل بأي خدمة حقيقية.";
+  "click",
 
-});
+  ()=>{
+
+    userError.textContent =
+    "";
+
+
+    passwordError.textContent =
+    "";
+
+
+    const userOK =
+    username
+    .value
+    .trim()
+    .length >= 3;
+
+
+    const passOK =
+    password
+    .value
+    .length >= 4;
+
+
+    if(!userOK){
+
+      userError.textContent =
+      "اكتب اسم مستخدم تجريبيًا.";
+
+    }
+
+
+    if(!passOK){
+
+      passwordError.textContent =
+      "كلمة المرور التجريبية يجب أن تكون 4 أحرف على الأقل.";
+
+    }
+
+
+    if(
+      userOK &&
+      passOK
+    ){
+
+      showLoading(
+        ()=>go(3)
+      );
+
+    }
+
+  }
+
+);
+
+
+
+document
+.getElementById(
+  "back1"
+)
+.addEventListener(
+
+  "click",
+
+  ()=>go(1)
+
+);
+
+
+
+document
+.getElementById(
+  "back2"
+)
+.addEventListener(
+
+  "click",
+
+  ()=>go(2)
+
+);
+
+
+
+document
+.getElementById(
+  "togglePassword"
+)
+.addEventListener(
+
+  "click",
+
+  ()=>{
+
+    password.type =
+    password.type ===
+    "password"
+    ?
+    "text"
+    :
+    "password";
+
+  }
+
+);
+
+
+
+document
+.getElementById(
+  "forgot"
+)
+.addEventListener(
+
+  "click",
+
+  ()=>{
+
+    passwordError.textContent =
+    "هذه وظيفة تجريبية فقط.";
+
+  }
+
+);
+
 
 
 otpInputs.forEach(
-(input,index)=>{
+
+  (input,index)=>{
 
 
-input.addEventListener(
-"input",
-()=>{
+    input.addEventListener(
 
-input.value =
-onlyDigits(input.value)
-.slice(0,1);
+      "input",
 
+      ()=>{
 
-if(
-input.value &&
-index < otpInputs.length - 1
-){
-
-otpInputs[index+1]
-.focus();
-
-}
-
-});
+        input.value =
+        onlyDigits(
+          input.value
+        )
+        .slice(
+          0,
+          1
+        );
 
 
-input.addEventListener(
-"keydown",
-event=>{
+        if(
+          input.value &&
+          index <
+          otpInputs.length - 1
+        ){
 
-if(
-event.key === "Backspace" &&
-!input.value &&
-index > 0
-){
+          otpInputs[
+            index + 1
+          ]
+          .focus();
 
-otpInputs[index-1]
-.focus();
+        }
 
-}
+      }
 
-});
-
-
-input.addEventListener(
-"paste",
-event=>{
-
-event.preventDefault();
-
-const text =
-onlyDigits(
-event.clipboardData
-.getData("text")
-)
-.slice(0,6);
+    );
 
 
-text.split("")
-.forEach(
-(char,i)=>{
+    input.addEventListener(
 
-if(otpInputs[i]){
+      "keydown",
 
-otpInputs[i].value =
-char;
+      event=>{
 
-}
+        if(
+          event.key ===
+          "Backspace"
+          &&
+          !input.value
+          &&
+          index > 0
+        ){
 
-});
+          otpInputs[
+            index - 1
+          ]
+          .focus();
+
+        }
+
+      }
+
+    );
 
 
-otpInputs[
-Math.min(
-text.length,
-5
-)
-].focus();
+    input.addEventListener(
 
-});
+      "paste",
 
-});
+      event=>{
+
+        event.preventDefault();
+
+
+        const text =
+        onlyDigits(
+          event.clipboardData
+          .getData(
+            "text"
+          )
+        )
+        .slice(
+          0,
+          6
+        );
+
+
+        text
+        .split("")
+        .forEach(
+
+          (char,i)=>{
+
+            if(
+              otpInputs[i]
+            ){
+
+              otpInputs[i]
+              .value =
+              char;
+
+            }
+
+          }
+
+        );
+
+
+        otpInputs[
+          Math.min(
+            text.length,
+            5
+          )
+        ]
+        .focus();
+
+      }
+
+    );
+
+  }
+
+);
+
 
 
 document
-.getElementById("verify")
+.getElementById(
+  "verify"
+)
 .addEventListener(
-"click",
-()=>{
 
-otpError.textContent = "";
+  "click",
 
+  ()=>{
 
-const code =
-otpInputs
-.map(input=>input.value)
-.join("");
+    otpError.textContent =
+    "";
 
 
-if(code.length !== 6){
-
-otpError.textContent =
-"أدخل الكود كاملًا.";
-
-return;
-
-}
+    const code =
+    otpInputs
+    .map(
+      input=>input.value
+    )
+    .join("");
 
 
-if(code !== "123456"){
+    if(
+      code.length !== 6
+    ){
 
-otpError.textContent =
-"الكود التجريبي غير صحيح. استخدم 123456.";
+      otpError.textContent =
+      "أدخل الكود كاملًا.";
 
-return;
+      return;
 
-}
+    }
 
 
-loader(()=>{
+    if(
+      code !== "123456"
+    ){
 
-clearTimer();
+      otpError.textContent =
+      "الكود التجريبي غير صحيح. استخدم 123456.";
 
-password.value = "";
+      return;
 
-otpInputs.forEach(
-input=>input.value=""
+    }
+
+
+    showLoading(
+
+      ()=>{
+
+        clearTimer();
+
+
+        password.value =
+        "";
+
+
+        otpInputs.forEach(
+          input=>
+          input.value=""
+        );
+
+
+        go(4);
+
+      }
+
+    );
+
+  }
+
 );
 
-go(4);
-
-});
-
-});
 
 
-function drawTimer(){
+function renderTimer(){
 
-const minutes =
-String(
-Math.floor(seconds/60)
-)
-.padStart(2,"0");
+  const minutes =
+  String(
+    Math.floor(
+      seconds / 60
+    )
+  )
+  .padStart(
+    2,
+    "0"
+  );
 
-const secs =
-String(seconds%60)
-.padStart(2,"0");
 
-timer.textContent =
-`${minutes}:${secs}`;
+  const secs =
+  String(
+    seconds % 60
+  )
+  .padStart(
+    2,
+    "0"
+  );
+
+
+  timer.textContent =
+  `${minutes}:${secs}`;
 
 }
+
 
 
 function clearTimer(){
 
-if(interval){
+  if(interval){
 
-clearInterval(interval);
+    clearInterval(
+      interval
+    );
 
-interval = null;
+
+    interval =
+    null;
+
+  }
 
 }
 
-}
 
 
 function startTimer(){
 
-clearTimer();
-
-seconds = 119;
-
-resend.disabled = true;
-
-drawTimer();
+  clearTimer();
 
 
-interval =
-setInterval(()=>{
-
-seconds--;
-
-drawTimer();
+  seconds =
+  119;
 
 
-if(seconds <= 0){
+  resend.disabled =
+  true;
 
-clearTimer();
 
-resend.disabled = false;
+  renderTimer();
+
+
+  interval =
+  setInterval(
+
+    ()=>{
+
+      seconds--;
+
+
+      renderTimer();
+
+
+      if(
+        seconds <= 0
+      ){
+
+        clearTimer();
+
+
+        resend.disabled =
+        false;
+
+      }
+
+    },
+
+    1000
+
+  );
 
 }
 
-},1000);
-
-}
 
 
 resend.addEventListener(
-"click",
-()=>{
 
-otpInputs.forEach(
-input=>input.value=""
+  "click",
+
+  ()=>{
+
+    otpInputs.forEach(
+      input=>
+      input.value=""
+    );
+
+
+    otpError.textContent =
+    "";
+
+
+    startTimer();
+
+
+    otpInputs[0]
+    .focus();
+
+  }
+
 );
 
-otpError.textContent = "";
-
-startTimer();
-
-otpInputs[0].focus();
-
-});
 
 
 document
-.getElementById("restart")
+.getElementById(
+  "restart"
+)
 .addEventListener(
-"click",
-()=>{
 
-clearTimer();
+  "click",
 
-name.value = "";
+  ()=>{
 
-phone.value = "";
-
-username.value = "";
-
-password.value = "";
-
-password.type =
-"password";
+    clearTimer();
 
 
-otpInputs.forEach(
-input=>input.value=""
+    fullName.value =
+    "";
+
+
+    phone.value =
+    "";
+
+
+    username.value =
+    "";
+
+
+    password.value =
+    "";
+
+
+    password.type =
+    "password";
+
+
+    otpInputs.forEach(
+      input=>
+      input.value=""
+    );
+
+
+    [
+      nameError,
+      phoneError,
+      userError,
+      passwordError,
+      otpError
+    ]
+    .forEach(
+      error=>
+      error.textContent=""
+    );
+
+
+    go(1);
+
+  }
+
 );
 
-
-[
-nameError,
-phoneError,
-userError,
-passwordError,
-otpError
-].forEach(
-error=>error.textContent=""
-);
-
-
-go(1);
-
-});
 
 
 document.addEventListener(
-"keydown",
-event=>{
 
-if(
-event.key === "Enter" &&
-event.target.tagName === "INPUT"
-){
+  "keydown",
 
-event.preventDefault();
+  event=>{
 
-}
+    if(
+      event.key ===
+      "Enter"
+      &&
+      event.target.tagName ===
+      "INPUT"
+    ){
 
-});
+      event.preventDefault();
+
+    }
+
+  }
+
+);
 
 
 })();
